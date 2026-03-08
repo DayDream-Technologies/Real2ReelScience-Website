@@ -6,9 +6,10 @@ export const SITE_URL = 'https://www.real2reelscience.com'
 
 // Used in public/robots.txt and public/sitemap.xml – keep in sync with SITE_URL
 
-// Logo (local asset in public/images)
-export const LOGO_HEADER = '/images/logo.png'
-export const LOGO_FOOTER = '/images/logo.png'
+// Logo (local asset in public/images); use BASE_URL so it works on GitHub Pages
+const base = import.meta.env.BASE_URL
+export const LOGO_HEADER = `${base}images/logo.png`
+export const LOGO_FOOTER = `${base}images/logo.png`
 
 // Social links (update with real URLs from live site)
 export const SOCIAL = {
