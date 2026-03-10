@@ -550,6 +550,130 @@ export function CollaborationDotsInline({ size = '100px' }) {
   )
 }
 
+/*
+ * OPEN BOOK INLINE (writers / storytelling)
+ * Simple open book icon with subtle page glow.
+ */
+const bookGlow = keyframes`
+  0%, 100% { opacity: 0.85; filter: brightness(1); }
+  50% { opacity: 1; filter: brightness(1.15); }
+`
+
+const OpenBookWrap = styled.div`
+  width: ${(p) => p.$size || '90px'};
+  height: ${(p) => p.$size || '90px'};
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  flex-shrink: 0;
+`
+
+const BookSpine = styled.span`
+  position: absolute;
+  left: 50%;
+  top: -2%;
+  width: 4px;
+  height: 52%;
+  margin-left: -2px;
+  background: ${(p) => p.theme.colors.accent};
+  border-radius: 2px;
+  box-shadow: 0 0 8px ${(p) => p.theme.colors.accent};
+  z-index: 1;
+`
+
+const BookPage = styled.span`
+  position: absolute;
+  top: 50%;
+  width: 42%;
+  height: 52%;
+  margin-top: -26%;
+  background: linear-gradient(
+    135deg,
+    ${(p) => p.theme.colors.surfaceElevated} 0%,
+    rgba(255, 255, 255, 0.12) 100%
+  );
+  border: 1px solid rgba(255, 159, 28, 0.35);
+  border-radius: ${(p) => (p.$right ? '4px 2px 2px 4px' : '2px 4px 4px 2px')};
+  box-shadow: 0 0 12px rgba(255, 159, 28, 0.2);
+  animation: ${bookGlow} 3s ease-in-out infinite;
+  animation-delay: ${(p) => p.$delay}s;
+  left: ${(p) => (p.$right ? 'auto' : '4%')};
+  right: ${(p) => (p.$right ? '4%' : 'auto')};
+  transform: translateY(-50%) ${(p) => (p.$right ? 'skewY(3deg) rotate(4deg)' : 'skewY(-3deg) rotate(-4deg)')};
+  transform-origin: ${(p) => (p.$right ? 'left center' : 'right center')};
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+`
+
+export function OpenBookInline({ size = '90px' }) {
+  return (
+    <OpenBookWrap $size={size} aria-hidden="true">
+      <BookPage $delay={0} $right={false} />
+      <BookPage $delay={0.15} $right />
+      <BookSpine />
+    </OpenBookWrap>
+  )
+}
+
+/*
+ * FIVE-POINT STAR INLINE (Hollywood / spotlight)
+ */
+const starTwinkle = keyframes`
+  0%, 100% { opacity: 0.9; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.08); }
+`
+
+const StarWrap = styled.div`
+  width: ${(p) => p.$size || '80px'};
+  height: ${(p) => p.$size || '80px'};
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  flex-shrink: 0;
+`
+
+const StarShape = styled.span`
+  display: block;
+  width: 75%;
+  height: 75%;
+  background: ${(p) => p.theme.colors.accent};
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+  box-shadow:
+    0 0 20px ${(p) => p.theme.colors.accent},
+    0 0 40px rgba(255, 159, 28, 0.35),
+    inset 0 0 8px rgba(255, 255, 255, 0.2);
+  animation: ${starTwinkle} 2.5s ease-in-out infinite;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+`
+
+export function StarInline({ size = '80px' }) {
+  return (
+    <StarWrap $size={size} aria-hidden="true">
+      <StarShape />
+    </StarWrap>
+  )
+}
+
 /* Backward-compatible aliases for previous animation names */
 export { FilmGrainAnimation as FilmStripAnimation, FilmGrainAnimation as FilmStripFrames }
 export { ScienceAtomAnimation as ScienceOrbitAnimation }

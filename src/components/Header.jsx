@@ -14,11 +14,11 @@ const HeaderEl = styled.header`
   ${gradientKeyframes}
   background: linear-gradient(
     135deg,
-    #0d1b2a 0%,
-    #1b3a4a 25%,
-    #243447 50%,
-    #1b3a4a 75%,
-    #0d1b2a 100%
+    #1a2f42 0%,
+    #2a4a5e 25%,
+    #354a5e 50%,
+    #2a4a5e 75%,
+    #1a2f42 100%
   );
   background-size: 300% 300%;
   animation: headerGradient 12s ease infinite;

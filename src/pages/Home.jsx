@@ -7,8 +7,8 @@ import AnimatedSection from '../components/AnimatedSection'
 import PageMeta from '../components/PageMeta'
 import {
   ScienceAtomInline,
-  OrbitSingleInline,
-  SciencePulseInline,
+  OpenBookInline,
+  StarInline,
 } from '../components/FilmScienceAnimations'
 
 const Section = styled.section`
@@ -181,7 +181,7 @@ export default function Home() {
       <AnimatedSection delay={150}>
         <GridSection>
           <GridAnimation>
-            <OrbitSingleInline size="90px" />
+            <OpenBookInline size="90px" />
           </GridAnimation>
           <GridContent>
             <H2>TESTIMONIALS</H2>
@@ -204,7 +204,7 @@ export default function Home() {
             <ContactForm />
           </GridContent>
           <GridAnimation>
-            <SciencePulseInline size="80px" />
+            <StarInline size="80px" />
           </GridAnimation>
         </GridSection>
       </AnimatedSection>
